@@ -1,0 +1,58 @@
+<form nz-form [formGroup]="userForm" nzLayout="vertical">
+  <nz-form-item>
+    <nz-form-label nzRequired>Name</nz-form-label>
+    <nz-form-control nzErrorTip="Please enter a valid name (min 3 characters)">
+      <input nz-input formControlName="name" placeholder="Enter name" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Email</nz-form-label>
+    <nz-form-control nzErrorTip="Please enter a valid email">
+      <input nz-input formControlName="email" placeholder="Enter email" type="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Age</nz-form-label>
+    <nz-form-control nzErrorTip="Age must be between 18 and 65">
+      <nz-input-number
+        formControlName="age"
+        [nzMin]="18"
+        [nzMax]="65"
+        placeholder="Enter age"
+        style="width: 100%">
+      </nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Department</nz-form-label>
+    <nz-form-control nzErrorTip="Please select a valid department">
+      <nz-select formControlName="department" placeholder="Select department">
+        <nz-option nzValue="IT" nzLabel="IT"></nz-option>
+        <nz-option nzValue="HR" nzLabel="HR"></nz-option>
+        <nz-option nzValue="Sales" nzLabel="Sales"></nz-option>
+        <nz-option nzValue="Finance" nzLabel="Finance"></nz-option>
+        <nz-option nzValue="Marketing" nzLabel="Marketing"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Status</nz-form-label>
+    <nz-form-control nzErrorTip="Please select a status">
+      <nz-select formControlName="status" placeholder="Select status">
+        <nz-option nzValue="active" nzLabel="Active"></nz-option>
+        <nz-option nzValue="inactive" nzLabel="Inactive"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <div class="modal-footer">
+    <button nz-button (click)="cancel()">Cancel</button>
+    <button nz-button nzType="primary" (click)="submitForm()">
+      {{ user ? 'Update' : 'Add' }}
+    </button>
+  </div>
+</form>

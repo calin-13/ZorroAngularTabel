@@ -1,0 +1,46 @@
+<div class="table-container">
+  <div class="header">
+    <h2>User Management</h2>
+    <button nz-button nzType="primary" (click)="openAddModal()">
+      <i nz-icon nzType="plus"></i>
+      Add
+    </button>
+  </div>
+
+  <nz-table
+    #basicTable
+    [nzData]="displayData"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    [nzTotal]="total"
+    [nzShowPagination]="true"
+    [nzFrontPagination]="false"
+    (nzPageIndexChange)="onPageIndexChange($event)">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Department</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of displayData">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.department }}</td>
+      <td>{{ user.status | status }}</td>
+      <td>
+        <button nz-button nzType="text" (click)="editUser(user)">
+          <i nz-icon nzType="edit" nzTheme="outline"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>
